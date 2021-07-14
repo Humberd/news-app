@@ -1,1 +1,8 @@
-<p>article-widget works!</p>
+<img class="image" [src]="article.urlToImage || defaultImgSrc" alt="article image">
+
+<span>{{article.author}}</span>
+<span>{{article.publishedAt | date}}</span>
+
+
+<h2>{{article.title}}</h2>
+<p>{{article.description}}</p>

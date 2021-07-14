@@ -1,3 +1,8 @@
 :host {
   display: block;
 }
+
+img.image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}

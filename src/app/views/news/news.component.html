@@ -1,14 +1,14 @@
-<div class="content">
+<main class="content">
   <mat-form-field>
     <input [formControl]="searchControl" matInput placeholder="Search" type="search">
   </mat-form-field>
 
   <article *ngIf="data?.totalResults !== 0">
-    <app-article-widget *ngFor="let article of data?.articles"></app-article-widget>
+    <app-article-widget *ngFor="let article of data?.articles" [article]="article"></app-article-widget>
   </article>
 
   <section *ngIf="data?.totalResults === 0">
     No articles found for {{searchControl.value}}
   </section>
 
-</div>
+</main>
