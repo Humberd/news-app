@@ -25,7 +25,7 @@ export namespace NewsModels {
   }
 
   export interface Source {
-    id: string;
+    id: string | null;
     name: string;
   }
 

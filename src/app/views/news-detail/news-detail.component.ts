@@ -1,8 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { NewsModels } from '../../models/news-models';
+import { CommentsService } from '../../services/comments.service';
 
 @Component({
   selector: 'app-news-detail',
@@ -11,49 +10,30 @@ import { map } from 'rxjs/operators';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NewsDetailComponent implements OnInit {
-  public article$!: Observable<any>;
-
-  public comments: any[] = [
-    {
-      name: 'Chris Nat',
-      date: new Date(),
-      avatar: '/assets/images/1.jpg',
-      comment: `Lorem ipsum dolor sit amet, consectetur
-                      adipiscing elit, sed do eiusmod tempor
-                      incididunt ut labore et dolore magna aliqua.
-                      Ut enim ad minim veniam, quis nostrud exercitation
-                      ullamco laboris nisi ut aliquip ex ea commodo consequat`,
-    },
-    {
-      name: 'Matt Damon',
-      date: new Date(),
-      avatar: '/assets/images/2.jpg',
-      comment: `Ut enim ad minim veniam, quis nostrud exercitation
-                      ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                      Lorem ipsum dolor sit amet, consectetur
-                      adipiscing elit, sed do eiusmod tempor
-                      incididunt ut labore et dolore magna aliqua. `,
-    },
-    {
-      name: 'Seb Willhelm',
-      date: new Date(),
-      avatar: '/assets/images/3.jpg',
-      comment: `Duis aute irure dolor in reprehenderit in voluptate
-                  velit esse cillum dolore eu fugiat nulla pariatur.
-                  Excepteur sint occaecat cupidatat non proident, sunt
-                  in culpa qui officia deserunt mollit anim id est laborum.`,
-    },
-  ];
+  readonly article: NewsModels.Article;
 
   constructor(
-    public activatedRoute: ActivatedRoute,
+    router: Router,
+    private commentsService: CommentsService,
   ) {
+    // fixme before mr
+    // this.article = router.getCurrentNavigation()?.extras.state as NewsModels.Article;
+    this.article = {
+      'source': {
+        'id': null,
+        'name': 'Page Six',
+      },
+      'author': 'Francesca Bacardi',
+      'title': 'Catt Sadler gets COVID despite being fully vaccinated: \'Delta is relentless\' - Page Six',
+      'description': '“I’m telling you this so that you understand that the pandemic is very much NOT over,” the former E! host wrote.',
+      'url': 'https://pagesix.com/2021/07/14/catt-sadler-gets-covid-19-despite-being-fully-vaccinated/',
+      'urlToImage': 'https://pagesix.com/wp-content/uploads/sites/3/2021/07/cat-sadler.jpg?quality=90&strip=all&w=1200',
+      'publishedAt': '2021-07-14T15:51:00Z',
+      'content': 'A fully vaccinated Catt Sadler revealed that she has contracted the Delta variant of COVID-19.\r\n“Im telling you this so that you understand that the pandemic is very much NOT over,” the former E! hos… [+1239 chars]',
+    };
   }
 
   public ngOnInit() {
-    this.article$ = this.activatedRoute.paramMap.pipe(
-      map(() => window.history.state),
-    );
 
     // Make sure that this page can only be
     // accessible from the main News list with

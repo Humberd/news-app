@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { NewsModels } from '../../../../models/news-models';
 
 @Component({
@@ -7,20 +7,6 @@ import { NewsModels } from '../../../../models/news-models';
   styleUrls: ['./article-widget.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ArticleWidgetComponent implements OnInit {
+export class ArticleWidgetComponent {
   @Input() article!: NewsModels.Article;
-
-  private readonly defaultImgSrc = '/assets/images/placeholder.jpg';
-
-  constructor() {
-  }
-
-  ngOnInit(): void {
-  }
-
-  getArticleSrc(): string {
-    return `url(${this.article.urlToImage || this.defaultImgSrc})`;
-  }
-
-
 }

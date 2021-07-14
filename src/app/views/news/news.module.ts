@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { ArticleWidgetComponent } from './components/article-widget/article-widget.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { ImageUtilsModule } from '../../modules/image-utils/image-utils.module';
 
 @NgModule({
   declarations: [NewsComponent, ArticleWidgetComponent],
@@ -22,6 +23,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MatInputModule,
     MatSnackBarModule,
     MatProgressBarModule,
+    ImageUtilsModule,
   ],
 })
 export class NewsModule {
