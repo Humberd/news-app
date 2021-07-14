@@ -9,8 +9,8 @@
     </li>
   </ol>
 
-  <section *ngIf="lastData?.totalResults === 0">
-    No articles found for {{searchControl.value}}
+  <section *ngIf="lastData?.totalResults === 0 && searchControl.value" class="not-found mat-display-1">
+    No articles found for "{{searchControl.value}}"
   </section>
 
 </main>

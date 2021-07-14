@@ -1,6 +1,7 @@
 :host {
   display: block;
   max-width: 1200px + (32*2);
+  min-height: 500px;
   background-color: #fff;
   margin: 8px auto 0;
 }
@@ -21,6 +22,11 @@
     display: grid;
     grid-gap: 32px;
     grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .not-found {
+    text-align: center;
+    padding: 32px 0;
   }
 
   @media screen and (max-width: 1000px) {
