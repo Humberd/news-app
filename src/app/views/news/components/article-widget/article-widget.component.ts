@@ -10,12 +10,17 @@ import { NewsModels } from '../../../../models/news-models';
 export class ArticleWidgetComponent implements OnInit {
   @Input() article!: NewsModels.Article;
 
-  defaultImgSrc = '/assets/images/placeholder.jpg';
+  private readonly defaultImgSrc = '/assets/images/placeholder.jpg';
 
   constructor() {
   }
 
   ngOnInit(): void {
   }
+
+  getArticleSrc(): string {
+    return `url(${this.article.urlToImage || this.defaultImgSrc})`;
+  }
+
 
 }

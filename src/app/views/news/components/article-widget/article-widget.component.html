@@ -1,4 +1,9 @@
-<img class="image" [src]="article.urlToImage || defaultImgSrc" alt="article image">
+<a class="image-wrapper" routerLink="/article" aria-label="article image">
+  <div
+    class="image"
+    [style.background-image]="getArticleSrc()"
+  ></div>
+</a>
 
 <div class="text-content">
   <section class="metadata mat-caption">

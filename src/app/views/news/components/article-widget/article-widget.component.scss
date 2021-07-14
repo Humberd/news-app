@@ -5,12 +5,30 @@
 
 $secondaryTextColor: rgba(0, 0, 0, 0.5);
 
-img.image {
+
+.image-wrapper {
   grid-column: 1;
   grid-row: 1 / span 2;
 
-  width: 100%;
-  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  display: block;
+  --foo: "";
+
+  .image {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+
+    background-size: 100% 100%;
+    background-position: center;
+
+    transition: background-size 128ms ease-out;
+
+    &:hover {
+      background-size: 110% 110%;
+    }
+  }
+
+
 }
 
 .text-content {
