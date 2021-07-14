@@ -11,6 +11,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { NEWS_SERVICE_API_KEY } from './models/news-service-api-key';
 import { HttpClientModule } from '@angular/common/http';
+import { CdkScrollableModule } from '@angular/cdk/scrolling';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatToolbarModule,
     MatIconModule,
     HttpClientModule,
+    CdkScrollableModule,
   ],
   providers: [
     {

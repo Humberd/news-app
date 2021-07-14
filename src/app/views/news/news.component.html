@@ -3,13 +3,13 @@
     <input [formControl]="searchControl" matInput placeholder="Search" type="search">
   </mat-form-field>
 
-  <ol *ngIf="data?.totalResults !== 0" class="articles-list">
-    <li *ngFor="let article of data?.articles; trackBy: trackBy">
+  <ol *ngIf="lastData?.totalResults !== 0" class="articles-list">
+    <li *ngFor="let article of items; trackBy: trackBy">
       <app-article-widget [article]="article"></app-article-widget>
     </li>
   </ol>
 
-  <section *ngIf="data?.totalResults === 0">
+  <section *ngIf="lastData?.totalResults === 0">
     No articles found for {{searchControl.value}}
   </section>
 
