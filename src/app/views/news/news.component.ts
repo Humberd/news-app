@@ -16,6 +16,8 @@ export class NewsComponent implements OnInit, OnDestroy {
   data?: NewsModels.List.ResponseParams = undefined;
   searchControl = new FormControl(undefined);
 
+  trackBy = (index: number) => index;
+
   private readonly unsubscribe$ = new Subject();
 
   constructor(

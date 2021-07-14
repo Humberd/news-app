@@ -4,7 +4,7 @@
   </mat-form-field>
 
   <ol *ngIf="data?.totalResults !== 0" class="articles-list">
-    <li *ngFor="let article of data?.articles">
+    <li *ngFor="let article of data?.articles; trackBy: trackBy">
       <app-article-widget [article]="article"></app-article-widget>
     </li>
   </ol>
