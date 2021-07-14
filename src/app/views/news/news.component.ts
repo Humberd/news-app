@@ -1,8 +1,10 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { NewsService } from '../../services/news.service';
 import { Subject } from 'rxjs';
 import { debounceTime, startWith, switchMap, takeUntil } from 'rxjs/operators';
 import { FormControl } from '@angular/forms';
+import { NewsModels } from '../../models/news-models';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-news',
@@ -11,18 +13,27 @@ import { FormControl } from '@angular/forms';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NewsComponent implements OnInit, OnDestroy {
-  public articles: any[] = [];
+  data?: NewsModels.List.ResponseParams = undefined;
   searchControl = new FormControl(undefined);
 
   private readonly unsubscribe$ = new Subject();
 
   constructor(
     private newsService: NewsService,
+    private changeDetectorRef: ChangeDetectorRef,
+    private matSnackBar: MatSnackBar,
   ) {
-
   }
 
   ngOnInit(): void {
+    this.watchSearchPhraseChange();
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+  }
+
+  private watchSearchPhraseChange(): void {
     this.searchControl.valueChanges
       .pipe(
         startWith(this.searchControl.value as string),
@@ -30,11 +41,15 @@ export class NewsComponent implements OnInit, OnDestroy {
         switchMap(searchPhrase => this.newsService.readList({ searchPhrase, pageNumber: 1, pageSize: 10 })),
         takeUntil(this.unsubscribe$),
       )
-      .subscribe(console.log);
-  }
-
-  ngOnDestroy(): void {
-    this.unsubscribe$.next();
+      .subscribe({
+        next: response => {
+          this.data = response;
+          this.changeDetectorRef.markForCheck();
+        },
+        error: error => {
+          this.matSnackBar.open(`Failed to fetch articles: ${error.message || error}`, 'Dismiss', { duration: 10000 });
+        },
+      });
   }
 
 }

@@ -1,14 +1,14 @@
 <div class="content">
-  <div *ngFor="let article of articles">
-    <a routerLink="/article" [state]="article">{{ article.title }}</a>
-  </div>
-
   <mat-form-field>
-    <input [formControl]="searchControl" matInput placeholder="Search">
+    <input [formControl]="searchControl" matInput placeholder="Search" type="search">
   </mat-form-field>
 
-  <!-- Search mat input with debouncing and mat progress bar for loading -->
-  <!-- List of fetched articles as snippets per the provided designs -->
-  <!-- No results indication -->
+  <article *ngIf="data?.totalResults !== 0">
+    <app-article-widget *ngFor="let article of data?.articles"></app-article-widget>
+  </article>
+
+  <section *ngIf="data?.totalResults === 0">
+    No articles found for {{searchControl.value}}
+  </section>
 
 </div>

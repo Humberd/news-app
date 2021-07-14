@@ -5,9 +5,11 @@ import { RouterModule } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { ArticleWidgetComponent } from './components/article-widget/article-widget.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
-  declarations: [NewsComponent],
+  declarations: [NewsComponent, ArticleWidgetComponent],
   imports: [
     CommonModule,
     RouterModule.forChild([{
@@ -17,6 +19,7 @@ import { MatInputModule } from '@angular/material/input';
     MatFormFieldModule,
     ReactiveFormsModule,
     MatInputModule,
+    MatSnackBarModule,
   ],
 })
 export class NewsModule {

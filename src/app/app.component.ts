@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
@@ -11,16 +11,19 @@ import { Router, RouterOutlet } from '@angular/router';
   ],
 })
 export class AppComponent {
-  public title = 'News';
   public article = false;
 
-  constructor(router: Router) {
+  constructor(
+    router: Router,
+    changeDetectorRef: ChangeDetectorRef,
+  ) {
     router.events.subscribe(() => {
       if (router.url.startsWith('/article')) {
         this.article = true;
       } else {
         this.article = false;
       }
+      changeDetectorRef.markForCheck();
     });
   }
 
