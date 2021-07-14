@@ -3,9 +3,11 @@
     <input [formControl]="searchControl" matInput placeholder="Search" type="search">
   </mat-form-field>
 
-  <article *ngIf="data?.totalResults !== 0">
-    <app-article-widget *ngFor="let article of data?.articles" [article]="article"></app-article-widget>
-  </article>
+  <ol *ngIf="data?.totalResults !== 0" class="articles-list">
+    <li *ngFor="let article of data?.articles">
+      <app-article-widget [article]="article"></app-article-widget>
+    </li>
+  </ol>
 
   <section *ngIf="data?.totalResults === 0">
     No articles found for {{searchControl.value}}

@@ -5,4 +5,18 @@
 .content {
   max-width: 1200px;
   margin: auto;
+
+  .articles-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    display: grid;
+    grid-gap: 32px;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    @media screen and (max-width: 1000px) {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
 }

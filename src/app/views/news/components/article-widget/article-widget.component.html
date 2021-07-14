@@ -1,8 +1,12 @@
 <img class="image" [src]="article.urlToImage || defaultImgSrc" alt="article image">
 
-<span>{{article.author}}</span>
-<span>{{article.publishedAt | date}}</span>
+<div class="text-content">
+  <section class="metadata mat-caption">
+    <span class="author">{{article.author}}</span>
+    <time class="time" [dateTime]="article.publishedAt">{{article.publishedAt | date}}</time>
+  </section>
 
+  <h2 class="headline">{{article.title}}</h2>
+  <p class="description">{{article.description}}</p>
 
-<h2>{{article.title}}</h2>
-<p>{{article.description}}</p>
+</div>
