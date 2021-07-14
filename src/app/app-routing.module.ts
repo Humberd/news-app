@@ -1,10 +1,17 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
-const routes: Routes = [];
+import { NewsDetailComponent } from './news-detail/news-detail.component';
+import { NewsComponent } from './news/news.component';
+
+const routes: Routes = [
+    { path: '', redirectTo: '/news', pathMatch: 'full' },
+    { path: 'news', component: NewsComponent, data: {animation: 'NewsComponent'} },
+    { path: 'article', component: NewsDetailComponent, data: {animation: 'NewsDetailComponent'} },
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

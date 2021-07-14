@@ -1,0 +1,10 @@
+<div class="content">
+    <div *ngFor="let article of articles">
+        <a routerLink="/article" [state]="article">{{ article.title }}</a>
+    </div>
+
+    <!-- Search mat input with debouncing and mat progress bar for loading -->
+    <!-- List of fetched articles as snippets per the provided designs -->
+    <!-- No results indication -->
+
+</div>
