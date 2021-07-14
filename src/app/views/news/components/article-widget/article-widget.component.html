@@ -1,4 +1,4 @@
-<a class="image-wrapper" routerLink="/article" aria-label="article image">
+<a class="image-wrapper" routerLink="/article" [state]="article" aria-label="article image">
   <div
     class="image"
     [style.background-image]="getArticleSrc()"
@@ -11,7 +11,9 @@
     <time class="time" [dateTime]="article.publishedAt">{{article.publishedAt | date}}</time>
   </section>
 
-  <h2 class="headline">{{article.title}}</h2>
+  <a class="headline-wrapper" routerLink="/article" [state]="article">
+    <h2 class="headline">{{article.title}}</h2>
+  </a>
   <p class="description">{{article.description}}</p>
 
 </div>

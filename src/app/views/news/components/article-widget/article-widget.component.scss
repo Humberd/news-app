@@ -27,8 +27,6 @@ $secondaryTextColor: rgba(0, 0, 0, 0.5);
       background-size: 110% 110%;
     }
   }
-
-
 }
 
 .text-content {
@@ -53,16 +51,26 @@ $secondaryTextColor: rgba(0, 0, 0, 0.5);
     }
   }
 
-  .headline {
-    margin-bottom: 16px;
-    font-size: 28px;
-    font-weight: normal;
+  .headline-wrapper {
+    text-decoration: none;
+    color: unset;
 
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
+    &:hover {
+      text-decoration: underline;
+    }
 
-    text-transform: uppercase;
+    .headline {
+      margin-bottom: 16px;
+      font-size: 28px;
+      font-weight: normal;
+
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+
+      text-transform: uppercase;
+    }
+
   }
 
   .description {
