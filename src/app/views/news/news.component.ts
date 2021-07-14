@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NewsService } from '../news.service';
+import { NewsService } from '../../services/news.service';
 
 @Component({
     selector: 'app-news',
@@ -7,7 +7,6 @@ import { NewsService } from '../news.service';
     styleUrls: ['./news.component.scss']
 })
 export class NewsComponent implements OnInit {
-
     public articles: any[] = [];
     public search!: string;
 

@@ -5,8 +5,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NewsDetailComponent } from './news-detail/news-detail.component';
-import { NewsComponent } from './news/news.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -15,11 +13,9 @@ import { MatIconModule } from '@angular/material/icon';
 const newsApiKey = 'YOUR_API_KEY_HERE';
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        NewsDetailComponent,
-        NewsComponent
-    ],
+  declarations: [
+    AppComponent,
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -33,7 +29,8 @@ const newsApiKey = 'YOUR_API_KEY_HERE';
     MatToolbarModule,
     MatIconModule,
   ],
-    providers: [],
-    bootstrap: [AppComponent]
+  providers: [],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {
+}
