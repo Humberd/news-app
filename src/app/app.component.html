@@ -1,28 +1,30 @@
 <!-- Navigation -->
 <mat-toolbar class="news-app-toolbar" color="default">
-    <mat-toolbar-row>
-        <button *ngIf="!article" mat-icon-button class="news-app-menu" [matMenuTriggerFor]="menu"
-            aria-label="icon-button with a menu">
-            <mat-icon>more_vert</mat-icon>
-        </button>
+  <mat-toolbar-row>
+    <button
+      *ngIf="!article" mat-icon-button class="news-app-menu" [matMenuTriggerFor]="menu"
+      aria-label="icon-button with a menu"
+    >
+      <mat-icon>more_vert</mat-icon>
+    </button>
 
-        <button *ngIf="article" (click)="goBack()" mat-icon-button class="news-app-menu" aria-label="icon-button back">
-            <mat-icon>arrow_back</mat-icon>
-        </button>
+    <button *ngIf="article" (click)="goBack()" mat-icon-button class="news-app-menu" aria-label="icon-button back">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
 
-        <mat-menu #menu="matMenu">
-            <button mat-menu-item>
-                <mat-icon>dialpad</mat-icon>
-                <span>Settings</span>
-            </button>
-        </mat-menu>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <mat-icon>dialpad</mat-icon>
+        <span>Settings</span>
+      </button>
+    </mat-menu>
 
-        <span>News</span>
-        <span class="news-app-spacer"></span>
-    </mat-toolbar-row>
+    <span>News</span>
+    <span class="news-app-spacer"></span>
+  </mat-toolbar-row>
 </mat-toolbar>
 
 <!-- Content -->
 <!-- <div [@routeAnimations]="prepareRoute(outlet)"> -->
-    <router-outlet #outlet="outlet"></router-outlet>
+<router-outlet #outlet="outlet"></router-outlet>
 <!-- </div> -->

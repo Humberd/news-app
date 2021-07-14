@@ -12,6 +12,7 @@ import { RouterModule } from '@angular/router';
       path: '',
       component: NewsDetailComponent,
     }]),
-  ]
+  ],
 })
-export class NewsDetailModule { }
+export class NewsDetailModule {
+}
