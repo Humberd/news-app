@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
     styleUrls: ['./news-detail.component.scss']
 })
 export class NewsDetailComponent implements OnInit {
-    public article$: Observable<object>;
+    public article$!: Observable<any>;
 
     public comments: any[] = [
         {

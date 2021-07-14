@@ -9,7 +9,7 @@ import { NewsService } from '../news.service';
 export class NewsComponent implements OnInit {
 
     public articles: any[] = [];
-    public search: string;
+    public search!: string;
 
     constructor(
         private newsService: NewsService
