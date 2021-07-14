@@ -3,6 +3,10 @@
     <a routerLink="/article" [state]="article">{{ article.title }}</a>
   </div>
 
+  <mat-form-field>
+    <input [formControl]="searchControl" matInput placeholder="Search">
+  </mat-form-field>
+
   <!-- Search mat input with debouncing and mat progress bar for loading -->
   <!-- List of fetched articles as snippets per the provided designs -->
   <!-- No results indication -->

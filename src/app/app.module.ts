@@ -9,11 +9,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
-import { NewsApiKeyConfig, NgnewsModule } from 'angular-news-api';
+import { NEWS_SERVICE_API_KEY } from './models/news-service-api-key';
+import { HttpClientModule } from '@angular/common/http';
 
-const newsApiConfig: NewsApiKeyConfig = {
-  key: 'e351d1c5b9a24c4cac0b843ab6325d34',
-};
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,9 +28,14 @@ const newsApiConfig: NewsApiKeyConfig = {
     MatMenuModule,
     MatToolbarModule,
     MatIconModule,
-    NgnewsModule.forRoot(newsApiConfig),
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: NEWS_SERVICE_API_KEY,
+      useValue: 'e351d1c5b9a24c4cac0b843ab6325d34',
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {
