@@ -35,7 +35,7 @@ import { CdkScrollableModule } from '@angular/cdk/scrolling';
   providers: [
     {
       provide: NEWS_SERVICE_API_KEY,
-      useValue: 'e351d1c5b9a24c4cac0b843ab6325d34',
+      useValue: 'ff62b26e65454b518c0e85f586892966',
     },
   ],
   bootstrap: [AppComponent],
