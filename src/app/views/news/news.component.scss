@@ -12,6 +12,16 @@
 
   .search-control {
     width: 256px;
+
+    .progress-bar-wrapper {
+      position: absolute;
+      width: 100%;
+      margin-top: 6px;
+
+      .progress-bar {
+        height: 3px;
+      }
+    }
   }
 
   .articles-list {

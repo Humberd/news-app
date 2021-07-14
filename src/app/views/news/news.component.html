@@ -1,7 +1,11 @@
 <main class="content">
   <mat-form-field class="search-control">
     <input [formControl]="searchControl" matInput placeholder="Search" type="search">
+    <div *ngIf="alreadyFetching" class="progress-bar-wrapper">
+      <mat-progress-bar class="progress-bar" mode="indeterminate"></mat-progress-bar>
+    </div>
   </mat-form-field>
+
 
   <ol *ngIf="lastData?.totalResults !== 0" class="articles-list">
     <li *ngFor="let article of items; trackBy: trackBy">

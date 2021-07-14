@@ -18,10 +18,10 @@ export class NewsComponent implements OnInit, OnDestroy {
   lastData?: NewsModels.List.ResponseParams = undefined;
   items: NewsModels.Article[] = [];
   searchControl = new FormControl(undefined);
+  alreadyFetching = false;
 
   trackBy = (index: number) => index;
 
-  private alreadyFetching = false;
   private readonly requestParams$ = new BehaviorSubject<NewsModels.List.RequestParams | null>(null);
   private readonly unsubscribe$ = new Subject();
 
@@ -51,6 +51,7 @@ export class NewsComponent implements OnInit, OnDestroy {
           }
 
           this.alreadyFetching = true;
+          this.changeDetectorRef.markForCheck();
 
           return this.newsService.readList(params).pipe(map(response => ({ response, params })));
         }),

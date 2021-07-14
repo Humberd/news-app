@@ -7,6 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { ArticleWidgetComponent } from './components/article-widget/article-widget.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [NewsComponent, ArticleWidgetComponent],
@@ -20,6 +21,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     ReactiveFormsModule,
     MatInputModule,
     MatSnackBarModule,
+    MatProgressBarModule,
   ],
 })
 export class NewsModule {
