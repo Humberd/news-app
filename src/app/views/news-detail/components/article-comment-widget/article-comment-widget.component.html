@@ -1,0 +1,6 @@
+<img class="avatar" [src]="comment.avatar" alt="comment author avatar" aria-disabled="true">
+
+<h3 class="author">{{comment.name}}</h3>
+<time class="date" [dateTime]="comment.date">{{comment.date | date}}</time>
+
+<p class="content">{{comment.comment}}</p>

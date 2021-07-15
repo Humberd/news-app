@@ -12,6 +12,10 @@ body {
 
 $primary-color: #f74062;
 
+:root {
+  --secondary-text-color: rgba(0, 0, 0, 0.5);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -23,4 +27,10 @@ html, body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+ol, li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }

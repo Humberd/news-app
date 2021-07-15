@@ -16,6 +16,8 @@ export class NewsDetailComponent implements OnInit, OnDestroy {
   readonly article: NewsModels.Article;
   comments!: CommentModel[];
 
+  trackBy = (index: number) => index;
+
   private readonly unsubscribe$ = new Subject();
 
   constructor(

@@ -3,9 +3,6 @@
   grid-template-rows: auto 32px auto;
 }
 
-$secondaryTextColor: rgba(0, 0, 0, 0.5);
-
-
 .image-wrapper {
   grid-column: 1;
   grid-row: 1 / span 2;
@@ -53,7 +50,7 @@ $secondaryTextColor: rgba(0, 0, 0, 0.5);
     }
 
     .time {
-      color: $secondaryTextColor;
+      color: var(--secondary-text-color);
       white-space: nowrap;
     }
   }
@@ -69,7 +66,7 @@ $secondaryTextColor: rgba(0, 0, 0, 0.5);
     .headline {
       margin-bottom: 16px;
       font-size: 28px;
-      font-weight: normal;
+      font-weight: lighter;
 
       text-overflow: ellipsis;
       white-space: nowrap;
@@ -81,7 +78,7 @@ $secondaryTextColor: rgba(0, 0, 0, 0.5);
   }
 
   .description {
-    color: $secondaryTextColor;
+    color: var(--secondary-text-color);
     line-height: 2;
   }
 }

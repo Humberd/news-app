@@ -4,8 +4,6 @@
   grid-template-columns: 1fr 5fr;
 }
 
-$secondaryTextColor: rgba(0, 0, 0, 0.5);
-
 .image-wrapper {
   grid-column: 1 / span 2;
   grid-row: 1 / span 2;
@@ -29,7 +27,7 @@ $secondaryTextColor: rgba(0, 0, 0, 0.5);
   margin-bottom: 16px;
   text-transform: uppercase;
 
-  color: $secondaryTextColor;
+  color: var(--secondary-text-color);
 
   padding: 32px 16px;
   display: flex;
@@ -57,14 +55,14 @@ $secondaryTextColor: rgba(0, 0, 0, 0.5);
   .headline {
     margin-bottom: 16px;
     font-size: 28px;
-    font-weight: normal;
+    font-weight: lighter;
 
     text-transform: uppercase;
   }
 
 
   .description {
-    color: $secondaryTextColor;
+    color: var(--secondary-text-color);
     line-height: 2;
   }
 

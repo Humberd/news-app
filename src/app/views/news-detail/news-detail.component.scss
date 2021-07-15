@@ -4,3 +4,22 @@
   margin: auto;
   background-color: #fff;
 }
+
+.content-section {
+  margin-bottom: 64px;
+}
+
+.comments-section {
+  margin: 16px;
+  padding-bottom: 64px;
+
+  .heading {
+    margin-bottom: 32px;
+  }
+
+  .comment {
+    margin-top: 32px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+}
