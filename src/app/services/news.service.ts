@@ -29,7 +29,7 @@ export class NewsService {
     /**
      * API free tier allows only localhost domains, however, we need it to also work on external domains
      */
-    if (!environment.production) {
+    if (environment.production) {
       return this.readFakeNews(params);
     }
 
