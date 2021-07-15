@@ -13,13 +13,12 @@ export class NewsDetailGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot,
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    const _hasRequiredData = this.router.getCurrentNavigation()?.extras.state;
-    // fixme before mr
-    // if (!hasRequiredData) {
-    //   this.router.navigateByUrl('/');
-    //
-    //   return false;
-    // }
+    const hasRequiredData = this.router.getCurrentNavigation()?.extras.state;
+    if (!hasRequiredData) {
+      this.router.navigateByUrl('/');
+
+      return false;
+    }
 
     return true;
   }

@@ -7,7 +7,7 @@
 
 <div class="text-content">
   <section class="metadata mat-caption">
-    <span class="author" [title]="article.author">{{article.author}}</span>
+    <span *ngIf="article.author" class="author" [title]="article.author">{{article.author}}</span>
     <time class="time" [dateTime]="article.publishedAt">{{article.publishedAt | date}}</time>
   </section>
 
