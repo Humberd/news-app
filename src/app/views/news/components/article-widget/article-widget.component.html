@@ -7,12 +7,12 @@
 
 <div class="text-content">
   <section class="metadata mat-caption">
-    <span class="author">{{article.author}}</span>
+    <span class="author" [title]="article.author">{{article.author}}</span>
     <time class="time" [dateTime]="article.publishedAt">{{article.publishedAt | date}}</time>
   </section>
 
   <a class="headline-wrapper" routerLink="/article" [state]="article">
-    <h2 class="headline">{{article.title}}</h2>
+    <h2 class="headline" [title]="article.title">{{article.title}}</h2>
   </a>
   <p class="description">{{article.description}}</p>
 

@@ -1,1 +1,4 @@
-<app-news-detail-content-section [article]="article"></app-news-detail-content-section>
+<app-news-detail-content-section
+  [article]="article"
+  [commentsCount]="comments?.length || 0"
+></app-news-detail-content-section>

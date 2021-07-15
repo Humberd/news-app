@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { NewsDetailGuard } from './guards/news-detail.guard';
 import { NewsDetailContentSectionComponent } from './components/news-detail-content-section/news-detail-content-section.component';
 import { ImageUtilsModule } from '../../modules/image-utils/image-utils.module';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { ImageUtilsModule } from '../../modules/image-utils/image-utils.module';
       canActivate: [NewsDetailGuard],
     }]),
     ImageUtilsModule,
+    MatButtonModule,
   ],
 })
 export class NewsDetailModule {

@@ -1,19 +1,35 @@
-<a class="image-wrapper" routerLink="/article" [state]="article" aria-label="article image">
+<div class="image-wrapper" aria-label="article image">
   <div
     class="image"
     [style.background-image]="article.urlToImage | backgroundImageSrc"
   ></div>
-</a>
+</div>
+
+<section class="metadata mat-caption" aria-label="metadata">
+  <span class="source item">{{article.source.name}}</span>
+  <span class="author item">{{article.author}}</span>
+  <time class="time item" [dateTime]="article.publishedAt">{{article.publishedAt | date}}</time>
+  <span class="comments item">{{commentsCount}} comments</span>
+</section>
 
 <div class="text-content">
-  <section class="metadata mat-caption">
-    <span class="author">{{article.author}}</span>
-    <time class="time" [dateTime]="article.publishedAt">{{article.publishedAt | date}}</time>
-  </section>
+  <h2 class="headline">{{article.title}}</h2>
 
-  <a class="headline-wrapper" routerLink="/article" [state]="article">
-    <h2 class="headline">{{article.title}}</h2>
-  </a>
   <p class="description">{{article.description}}</p>
 
+  <p class="description">{{article.content}}</p>
+
+  <div class="read-more-wrapper">
+    <a
+      class="read-more"
+      [href]="article.url"
+      [disabled]="!article.url"
+      rel="noopener noreferrer"
+      target="_blank"
+      mat-flat-button
+      color="accent"
+    >
+      Read more
+    </a>
+  </div>
 </div>

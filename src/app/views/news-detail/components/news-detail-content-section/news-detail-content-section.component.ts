@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { NewsModels } from '../../../../models/news-models';
 
 @Component({
@@ -7,13 +7,7 @@ import { NewsModels } from '../../../../models/news-models';
   styleUrls: ['./news-detail-content-section.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NewsDetailContentSectionComponent implements OnInit {
+export class NewsDetailContentSectionComponent {
   @Input() article!: NewsModels.Article;
-
-  constructor() {
-  }
-
-  ngOnInit(): void {
-  }
-
+  @Input() commentsCount!: number;
 }
