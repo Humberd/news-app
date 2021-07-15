@@ -49,8 +49,9 @@ export class NewsService {
       .pipe(
         tap(response => {
           if (params.searchPhrase) {
+            const searchPhraseLc = params.searchPhrase.toLocaleLowerCase();
             response.articles = response.articles.filter(article => {
-              article.title.includes(params.searchPhrase) || article.description?.includes(params.searchPhrase);
+              return article.title.toLocaleLowerCase().includes(searchPhraseLc) || article.description?.toLocaleLowerCase().includes(searchPhraseLc);
             });
           }
 
