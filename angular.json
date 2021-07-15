@@ -41,7 +41,6 @@
           },
           "configurations": {
             "production": {
-              "baseHref": "news-app",
               "budgets": [
                 {
                   "type": "initial",
