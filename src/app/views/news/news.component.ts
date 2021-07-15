@@ -5,6 +5,7 @@ import { debounceTime, map, startWith, switchMap, takeUntil, throttleTime } from
 import { FormControl } from '@angular/forms';
 import { NewsModels } from '../../models/news-models';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute, Router } from '@angular/router';
 
 const PAGE_SIZE = 10;
 
@@ -29,6 +30,8 @@ export class NewsComponent implements OnInit, OnDestroy {
     private newsService: NewsService,
     private changeDetectorRef: ChangeDetectorRef,
     private matSnackBar: MatSnackBar,
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
   ) {
   }
 
@@ -36,6 +39,7 @@ export class NewsComponent implements OnInit, OnDestroy {
     this.watchForRequestParamsChange();
     this.watchSearchPhraseChange();
     this.watchAppScroll();
+    this.watchQueryParamChange();
   }
 
   ngOnDestroy(): void {
@@ -65,12 +69,13 @@ export class NewsComponent implements OnInit, OnDestroy {
           } else {
             this.items = this.items.concat(...response.articles);
           }
-          this.changeDetectorRef.markForCheck();
           this.alreadyFetching = false;
+          this.changeDetectorRef.markForCheck();
         },
         error: error => {
           this.matSnackBar.open(`Failed to fetch articles: ${error.message || error}`, 'Dismiss', { duration: 10000 });
           this.alreadyFetching = false;
+          this.changeDetectorRef.markForCheck();
         },
       });
   }
@@ -82,7 +87,20 @@ export class NewsComponent implements OnInit, OnDestroy {
         debounceTime(300),
         takeUntil(this.unsubscribe$),
       )
-      .subscribe(searchPhrase => this.requestParams$.next({ searchPhrase, pageNumber: 1, pageSize: PAGE_SIZE }));
+      .subscribe(searchPhrase => {
+        this.requestParams$.next({ searchPhrase, pageNumber: 1, pageSize: PAGE_SIZE });
+        this.updateUrl(searchPhrase);
+      });
+  }
+
+  private updateUrl(searchPhrase: string): void {
+    this.router.navigate(
+      [],
+      {
+        relativeTo: this.activatedRoute,
+        queryParams: { searchPhrase: searchPhrase || null },
+        queryParamsHandling: 'merge',
+      });
   }
 
   private watchAppScroll() {
@@ -117,6 +135,30 @@ export class NewsComponent implements OnInit, OnDestroy {
           ...currentRequestParams,
           pageNumber: currentRequestParams.pageNumber + 1,
         });
+      });
+  }
+
+  private watchQueryParamChange() {
+    this.activatedRoute.queryParamMap
+      .pipe(
+        map(paramMap => paramMap.get('searchPhrase')),
+        takeUntil(this.unsubscribe$),
+      )
+      .subscribe(searchPhrase => {
+        /**
+         * Handling a case where either of then can be either: null, undefined or ''
+         * We don't want to accidentally trigger another request when the value was also nullish before
+         * Or accidentally make an infinite loop.
+         */
+        if (!searchPhrase && !this.searchControl.value) {
+          return;
+        }
+
+        if (searchPhrase === this.searchControl.value) {
+          return;
+        }
+
+        this.searchControl.patchValue(searchPhrase);
       });
   }
 
