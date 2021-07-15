@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
+import { slideInAnimation } from './animations';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +8,7 @@ import { Router, RouterOutlet } from '@angular/router';
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
-    // slideInAnimation
+    slideInAnimation,
   ],
 })
 export class AppComponent {

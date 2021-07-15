@@ -1,5 +1,10 @@
 :host {
   display: block;
+  width: 100%;
+}
+
+.content-wrapper {
+  display: block;
   max-width: 1264px;
   margin: auto;
   background-color: #fff;

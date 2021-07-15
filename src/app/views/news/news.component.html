@@ -1,20 +1,21 @@
-<main class="content">
-  <mat-form-field class="search-control">
-    <input [formControl]="searchControl" matInput placeholder="Search" type="search">
-    <div *ngIf="alreadyFetching" class="progress-bar-wrapper">
-      <mat-progress-bar class="progress-bar" mode="indeterminate"></mat-progress-bar>
-    </div>
-  </mat-form-field>
+<div class="content-wrapper">
+  <main class="content">
+    <mat-form-field class="search-control">
+      <input [formControl]="searchControl" matInput placeholder="Search" type="search">
+      <div *ngIf="alreadyFetching" class="progress-bar-wrapper">
+        <mat-progress-bar class="progress-bar" mode="indeterminate"></mat-progress-bar>
+      </div>
+    </mat-form-field>
 
 
-  <ol *ngIf="lastData?.totalResults !== 0" class="articles-list">
-    <li *ngFor="let article of items; trackBy: trackBy">
-      <app-article-widget [article]="article"></app-article-widget>
-    </li>
-  </ol>
+    <ol *ngIf="lastData?.totalResults !== 0" class="articles-list">
+      <li *ngFor="let article of items; trackBy: trackBy">
+        <app-article-widget [article]="article"></app-article-widget>
+      </li>
+    </ol>
 
-  <section *ngIf="lastData?.totalResults === 0 && searchControl.value" class="not-found mat-display-1">
-    No articles found for "{{searchControl.value}}"
-  </section>
-
-</main>
+    <section *ngIf="lastData?.totalResults === 0 && searchControl.value" class="not-found mat-display-1">
+      No articles found for "{{searchControl.value}}"
+    </section>
+  </main>
+</div>

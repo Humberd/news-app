@@ -1,20 +1,20 @@
-<app-news-detail-content-section
-  class="content-section"
-  [article]="article"
-  [commentsCount]="comments?.length || 0"
-></app-news-detail-content-section>
+<div class="content-wrapper">
+  <app-news-detail-content-section
+    class="content-section"
+    [article]="article"
+    [commentsCount]="comments?.length || 0"
+  ></app-news-detail-content-section>
 
-<section class="comments-section">
-  <h2 class="heading mat-display-1">{{comments?.length || 0}} Comments</h2>
+  <section class="comments-section">
+    <h2 class="heading mat-display-1">{{comments?.length || 0}} Comments</h2>
 
-  <ol aria-label="comments list">
-    <li *ngFor="let comment of comments; trackBy: trackBy">
-      <app-article-comment-widget
-        class="comment"
-        [comment]="comment"
-      ></app-article-comment-widget>
-    </li>
-  </ol>
-
-</section>
-
+    <ol aria-label="comments list">
+      <li *ngFor="let comment of comments; trackBy: trackBy">
+        <app-article-comment-widget
+          class="comment"
+          [comment]="comment"
+        ></app-article-comment-widget>
+      </li>
+    </ol>
+  </section>
+</div>
